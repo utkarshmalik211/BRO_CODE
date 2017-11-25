@@ -60,7 +60,7 @@ chrome.contextMenus.onClicked.addListener(function(clickData) {
       if (input.charCodeAt(i) <= 127) {
         input1 += input.charAt(i);
       } else {
-        input1 += " "
+        // input1 += " "
       }
     }
     Algorithmia.client("simO91UBDDTh/UPohPD0m7V97A11")
@@ -77,6 +77,7 @@ chrome.contextMenus.onClicked.addListener(function(clickData) {
             maxVal = output.result[i][1];
           }
         }
+        if(maxVal<0.55) alert("Language Detection Error Output may vary...");
         var lang = output.result[maxInd][0];
         console.log(langNamesMap[lang] + "\n" + input);
         $.ajax({
@@ -90,17 +91,18 @@ chrome.contextMenus.onClicked.addListener(function(clickData) {
             api_key: 'hackerrank|1340717-2223|5eb3b077d09921bb11ec13ca11dc5b5db1497c3f',
             wait: true
           },
-          // data: 'source='+input+'&lang="' + langNamesMap[lang] + '"&testcases=["' + ''+ '"]&api_key=hackerrank|1340717-2223|5eb3b077d09921bb11ec13ca11dc5b5db1497c3f',
           success: function(data) {
             console.log(data);
-            if (data.result.stdout)
-              alert(data.result.stdout);
-            else
-              alert(data.result.compilemessage);
-            //process the JSON data etc
+            if (data.result.stdout) {
+              alert("Language Detected : "+lang+"\nOutput :"+data.result.stdout);
+            } else if (data.result.compilemessage) {
+              alert("Language Detected : "+lang+"\nError Occured :"+data.result.compilemessage);
+            } else if (data.result.stderr){
+              alert("Language Detected : "+lang+"\nStandard I/o error Occured :"+data.result.stderr);
+            }
           },
           error: function() {
-            alert("Cannot get data");
+            alert("Cannot get data\nCheck your internet connection.");
           },
           timeout: 100000,
           dataType: "json",
