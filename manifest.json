@@ -3,7 +3,7 @@
 
   "name": "Bro Code",
   "description": "This extension allows the user to execute code selected from any webpage.",
-  "version": "0.1",
+  "version": "0.4",
 
   "browser_action": {
     "default_icon": "icon.png",
@@ -12,10 +12,11 @@
   "permissions": [
     "activeTab",
     "storage",
-    "contextMenus"
+    "contextMenus",
+    "<all_urls>"
   ],
   "background": {
-    "scripts" :["contextClick.js"] ,
+    "scripts" :["contextClick.js","jquery.js","lang-detect.js"] ,
     "persistent" : false
   }
   ,
