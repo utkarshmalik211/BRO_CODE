@@ -1,7 +1,7 @@
 # BRO_CODE
 This extension allows the user to execute code selected from any webpage.
 
-One Paragraph of project description goes here
+
 
 ## Getting Started
 
@@ -12,14 +12,14 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-Give examples
+Chrome browser 😂
 ```
 
 ### Installing
 
 A step by step series of examples that tell you have to get a development env running
 
-Say what the step will be
+
 
 ```
 Give the example
